@@ -5,8 +5,8 @@ const options = {
   },
 };
 
-const fetchImg = () => {
-  fetch(`https://api.pexels.com/v1/search?query=cat`, options)
+const fetchImg = (search) => {
+  fetch(`https://api.pexels.com/v1/search?query=${search}`, options)
     .then((response) => response.json())
     .then((json) => {
       console.log(json);
@@ -22,6 +22,67 @@ const renderImg = (json) => {
     <div class="col-md-4">
               <div class="card mb-4 shadow-sm">
                 <img src="${img}"
+                  class="bd-placeholder-img card-img-top"
+                  width="100%"
+                  height="225"
+                  xmlns="http://www.w3.org/2000/svg"
+                  preserveAspectRatio="xMidYMid slice"
+                  focusable="false"
+                  role="img"
+                  aria-label="Placeholder: Thumbnail"
+                >
+
+                <div class="card-body">
+                  <p class="card-text">
+                    This is a wider card with supporting text below as a natural
+                    lead-in to additional content. This content is a little bit
+                    longer.
+                  </p>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <div class="btn-group">
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        View
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-sm btn-outline-secondary"
+                      >
+                        Edit
+                      </button>
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+    `;
+  }
+  console.log(row);
+};
+
+const fetchImg2 = () => {
+  fetch(`https://api.pexels.com/v1/search?query=8490200`, options)
+    .then((response) => response.json())
+    .then((json) => {
+      console.log(json);
+      renderImg(json);
+    })
+    .catch((err) => renderError(err));
+};
+
+const renderImg2 = (json) => {
+  let row = document.querySelector(".row-for-cards");
+  for (let i = 0; i < 9; i++) {
+    const img = json[i];
+    row.innerHTML += `
+    <div class="col-md-4">
+              <div class="card mb-4 shadow-sm">
+                <img src="${photos}"
                   class="bd-placeholder-img card-img-top"
                   width="100%"
                   height="225"
