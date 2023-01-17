@@ -9,11 +9,11 @@ const fetchImg = () => {
   fetch(`https://api.pexels.com/v1/search?query=cat`, options)
     .then((response) => response.json())
     .then((json) => {
+      console.log(json);
       renderImg(json);
     })
     .catch((err) => renderError(err));
 };
-
 const renderImg = (json) => {
   let row = document.querySelector(".row-for-cards");
   for (let i = 0; i < 9; i++) {
@@ -31,7 +31,7 @@ const renderImg = (json) => {
                   role="img"
                   aria-label="Placeholder: Thumbnail"
                 >
-                
+
                 <div class="card-body">
                   <p class="card-text">
                     This is a wider card with supporting text below as a natural
